@@ -1,0 +1,23 @@
+nav {
+  align-items: center;
+  background-color: #8A53A6;
+  display: flex;
+  height: 88px;
+  line-height: 88px;
+  padding: 24px;
+}
+
+nav #add-book-container {
+  margin-left: auto;
+}
+
+nav #nav-title {
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: 32px;
+}
+
+nav .nav-item {
+  font-size: 16px;
+  font-weight: 300;
+}
