@@ -1,0 +1,3 @@
+have books rise up a little on hover
+
+bookmark icon in nav?

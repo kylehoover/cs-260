@@ -1,0 +1,65 @@
+main {
+  /*text-align: center;*/
+}
+
+main header {
+  color: #9e9e9e;
+}
+
+main header#about-header {
+  font-size: 72px;
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+
+main hr {
+  margin: 64px 0;
+  width: 400px;
+}
+
+main header#faq-header {
+  font-size: 48px;
+  font-weight: 500;
+  /*margin: 96px 0 16px;*/
+}
+
+main section {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+main section#asterisk-text {
+  font-size: 12px;
+}
+
+main section.faq-item {
+  margin-bottom: 32px;
+}
+
+main section .question {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+main section .answer {
+  /*margin: auto;*/
+  max-width: 600px;
+}
+
+main section .answer .icons {
+  /*display: flex;*/
+  /*justify-content: center;*/
+}
+
+main section .answer .icons .icon-info {
+  display: flex;
+  margin-right: 64px;
+}
+
+main section .answer .icons .icon-info:last-child {
+  margin-right: 0;
+}
+
+main section .answer .icons .icon-info i {
+  margin-right: 8px;
+}

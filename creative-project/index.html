@@ -14,33 +14,110 @@
 </head>
 <body>
 
-<nav>
-  <a href="/" id="nav-title">Bookmark</a>
-  <ul>
-    <li>
-      <a href="/" class="nav-item">Home</a>
-    </li>
-    <li>
-      <a href="/" class="nav-item">Books</a>
-    </li>
-    <li>
-      <a href="/" class="nav-item">Progress</a>
-    </li>
-    <li>
-      <a href="/" class="nav-item">Stats</a>
-    </li>
-  </ul>
-  <ul id="add-book-container">
-    <li>
-      <button class="waves-effect waves-light btn teal lighten-2">
-        Add Book
-      </button>
-    </li>
-  </ul>
-</nav>
+<header>
+  <nav>
+    <div id="logo">
+      <a href="/" id="nav-title">Bookmark</a>
+      <i class="material-icons">bookmark</i>
+    </div>
+    <ul>
+      <li class="active"><a href="/" class="nav-item">Home</a></li>
+      <li><a href="/" class="nav-item">Books</a></li>
+      <li><a href="/" class="nav-item">Progress</a></li>
+      <li><a href="/" class="nav-item">Stats</a></li>
+      <li><a href="/about/" class="nav-item">About</a></li>
+    </ul>
+    <ul id="add-book-container">
+      <li>
+        <button id="add-book" class="waves-effect waves-light btn secondary">
+          Add Book
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="books-grid">
+    <div class="stats">
+      <header>
+        At a Glance
+      </header>
+      <section>
+        <header class="subheader">
+          Progress
+        </header>
+        <div class="progress">
+          <div class="determinate secondary"></div>
+        </div>
+        <div class="label">
+          2/12
+        </div>
+      </section>
+      <section>
+        <!--<header class="subheader">-->
+          <!--Stats-->
+        <!--</header>-->
+        <div class="pages-read">
+          <div class="number">
+            1,333
+          </div>
+          <div class="label">
+            Total Pages Read
+          </div>
+        </div>
+        <div class="pages-read">
+          <div class="number">
+            1,333
+          </div>
+          <div class="label">
+            Pages Read in 2018
+          </div>
+        </div>
+      </section>
+      <section>
+        <header class="subheader">
+          Icons
+        </header>
+        <div class="icon-info">
+          <i class="small material-icons status-icon orange-icon">bookmark</i>
+          <span class="label">Currently Reading</span>
+        </div>
+        <div class="icon-info">
+          <i class="small material-icons status-icon green-icon">check_circle</i>
+          <span class="label">Read</span>
+        </div>
+      </section>
+    </div>
+    <div class="book hoverable">
+      <img src="/imgs/wor.jpg" />
+      <span class="circle status-icon"></span>
+      <i class="small material-icons status-icon orange-icon">bookmark</i>
+    </div>
+    <div class="book hoverable">
+      <img src="/imgs/re.jpg" />
+      <i class="small material-icons status-icon orange-icon">bookmark</i>
+    </div>
+    <div class="book hoverable">
+      <img src="/imgs/aeneid.jpg" />
+      <i class="small material-icons status-icon orange-icon">bookmark</i>
+    </div>
+    <div class="book hoverable">
+      <img src="/imgs/iliad.jpg" />
+      <i class="small material-icons status-icon green-icon">check_circle</i>
+    </div>
+    <div class="book hoverable">
+      <img src="/imgs/hp7.jpg" />
+      <i class="small material-icons status-icon green-icon">check_circle</i>
+    </div>
+  </div>
+</main>
 
 <footer>
-  <a href="">GitHub Repository</a>
+  <hr />
+  <a id="repo-link" href="https://github.com/kylehoover/cs-260/tree/master/creative-project">
+    GitHub Repository
+  </a>
 </footer>
 
 <!-- Materialize -->
