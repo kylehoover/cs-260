@@ -1,26 +1,15 @@
-main {
-  /*text-align: center;*/
-}
-
-main header {
-  color: #9e9e9e;
-}
-
-main header#about-header {
-  font-size: 72px;
-  font-weight: 600;
-  margin-bottom: 48px;
-}
-
-main hr {
+main > hr {
   margin: 64px 0;
   width: 400px;
 }
 
-main header#faq-header {
-  font-size: 48px;
-  font-weight: 500;
-  /*margin: 96px 0 16px;*/
+main > header#about-header {
+  font-size: 72px;
+  font-weight: 600;
+}
+
+main > header#faq-header {
+  margin-bottom: 0;
 }
 
 main section {
@@ -33,7 +22,7 @@ main section#asterisk-text {
 }
 
 main section.faq-item {
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 main section .question {
@@ -42,13 +31,7 @@ main section .question {
 }
 
 main section .answer {
-  /*margin: auto;*/
   max-width: 600px;
-}
-
-main section .answer .icons {
-  /*display: flex;*/
-  /*justify-content: center;*/
 }
 
 main section .answer .icons .icon-info {

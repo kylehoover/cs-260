@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+  <!-- Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection" />
+
+  <link type="text/css" rel="stylesheet" href="/css/bookmark.css" />
+
+  <title>Bookmark</title>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div id="logo">
+      <a href="/" id="nav-title">Bookmark</a>
+      <i class="material-icons">bookmark</i>
+    </div>
+    <ul>
+      <li><a href="/home.html" class="nav-item">Home</a></li>
+      <li><a href="/books/" class="nav-item">Books</a></li>
+      <li><a href="/progress/" class="nav-item">Progress</a></li>
+      <li class="active"><a href="/stats/" class="nav-item">Stats</a></li>
+      <li><a href="/about/" class="nav-item">About</a></li>
+    </ul>
+    <ul id="add-book-container">
+      <li>
+        <a href="/books/add.html" id="add-book" class="waves-effect waves-light btn secondary">
+          Add Book
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <header class="page-header">
+    Coming Soon . . .
+  </header>
+</main>
+
+<footer>
+  <hr />
+  <a id="repo-link" href="https://github.com/kylehoover/cs-260/tree/master/creative-project">
+    GitHub Repository
+  </a>
+</footer>
+
+<!-- Materialize -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+</body>
+</html>

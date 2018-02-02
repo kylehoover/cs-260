@@ -1,0 +1,64 @@
+.book-container {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.book-container header.subheader {
+  color: black;
+  font-size: 24px;
+}
+
+.book-container > .book {
+  margin-right: 32px;
+  max-width: 232px;
+  position: relative;
+}
+
+.book-container > .book > img {
+  max-width: inherit;
+}
+
+.book-container > .book > .status-icon {
+  font-size: 2.5rem;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+.book-container > .book > .input-field {
+  margin: 32px 0;
+}
+
+.book-container > .book-history > header {
+  margin-bottom: 0;
+}
+
+.book-container > .book-history > .author {
+  color: #9e9e9e;
+  margin-bottom: 48px;
+}
+
+.book-container > .book-history > .history > ul {
+  list-style-type: circle;
+  margin-left: 16px;
+ }
+
+.book-container > .book-history > .history > ul > li {
+  list-style-type: inherit;
+}
+
+.book-container > .book-history > .notes {
+  max-width: 500px;
+}
+
+.book-container > .book-history > .notes > .note {
+  margin-bottom: 64px;
+}
+
+.book-container > .book-history > .notes > .note > p {
+  margin-bottom: 0;
+}
+
+.book-container > .book-history > .notes > .note > .date {
+  color: #9e9e9e;
+}

@@ -22,28 +22,28 @@
       <i class="material-icons">bookmark</i>
     </div>
     <ul>
-      <li><a href="/" class="nav-item">Home</a></li>
-      <li><a href="/" class="nav-item">Books</a></li>
-      <li><a href="/" class="nav-item">Progress</a></li>
-      <li><a href="/" class="nav-item">Stats</a></li>
+      <li><a href="/home.html" class="nav-item">Home</a></li>
+      <li><a href="/books/" class="nav-item">Books</a></li>
+      <li><a href="/progress/" class="nav-item">Progress</a></li>
+      <li><a href="/stats/" class="nav-item">Stats</a></li>
       <li class="active"><a href="/about/" class="nav-item">About</a></li>
     </ul>
     <ul id="add-book-container">
       <li>
-        <button id="add-book" class="waves-effect waves-light btn secondary">
+        <a href="/books/add.html" id="add-book" class="waves-effect waves-light btn secondary">
           Add Book
-        </button>
+        </a>
       </li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <header id="about-header">
+  <header id="about-header" class="page-header">
     Welcome to Bookmark!
   </header>
   <section>
-    A place to keep track of all your books,<br />and to get fun, completely unnecessary statistics about them
+    A place to keep track of all your books, and to get fun,<br />completely unnecessary statistics about them
   </section>
   <section>
     Set yearly reading goals, keep track of your progress,<br />and view a history of everything you have read
@@ -51,7 +51,7 @@
 
   <hr />
 
-  <header id="faq-header">
+  <header id="faq-header" class="page-header">
     FAQ*
   </header>
   <section id="asterisk-text" class="faq-item">
@@ -64,6 +64,17 @@
     <div class="answer">
       The <b>Home</b> page, the <b>About</b> page, clicking the <b>Add Book</b> button, and clicking on
       <b>Words of Radiance</b> on the <b>Home</b> page.
+    </div>
+  </section>
+  <section class="faq-item">
+    <div class="question">
+      What information is the home page showing me?
+    </div>
+    <div class="answer">
+      The home page gives you a summary of the books you are currently reading, or have already read, for the
+      current year. Click on one of the books to get more information about that book. The home page also gives you
+      some quick information on how much progress you've made toward your reading goal for the year, as well as a few
+      fun stats.
     </div>
   </section>
   <section class="faq-item">

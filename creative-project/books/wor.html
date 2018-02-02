@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+  <!-- Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection" />
+
+  <link type="text/css" rel="stylesheet" href="/css/bookmark.css" />
+  <link type="text/css" rel="stylesheet" href="/css/books.css" />
+
+  <title>Bookmark</title>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div id="logo">
+      <a href="/" id="nav-title">Bookmark</a>
+      <i class="material-icons">bookmark</i>
+    </div>
+    <ul>
+      <li><a href="/home.html" class="nav-item">Home</a></li>
+      <li><a href="/books/" class="nav-item">Books</a></li>
+      <li><a href="/progress/" class="nav-item">Progress</a></li>
+      <li><a href="/stats/" class="nav-item">Stats</a></li>
+      <li><a href="/about/" class="nav-item">About</a></li>
+    </ul>
+    <ul id="add-book-container">
+      <li>
+        <a href="/books/add.html" id="add-book" class="waves-effect waves-light btn secondary">
+          Add Book
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="book-container">
+    <div class="book">
+      <img src="/imgs/wor.jpg" />
+      <i class="material-icons status-icon orange-icon">bookmark</i>
+      <div class="input-field">
+        <select id="reading-status">
+          <option selected>Currently Reading</option>
+          <option>Read</option>
+          <option>Want to Read</option>
+        </select>
+        <label for="reading-status">Reading Status</label>
+      </div>
+      <div class="book-info">
+        <p># of times read: 0</p>
+        <p>Pages: 1,080</p>
+        <p>Series: Stormlight Archive #2</p>
+      </div>
+    </div>
+    <div class="book-history">
+      <header class="page-header">
+        Words of Radiance
+      </header>
+      <div class="author">
+        Brandon Sanderson
+      </div>
+      <div class="notes">
+        <header class="subheader">
+          Notes
+          <button class="waves-effect waves-light btn right primary">New Note</button>
+        </header>
+        <div class="note">
+          <p>
+            Considering how long the books in this series are, you would think there would be parts you would
+            have to trudge through until the pace picked up again. And yet, that has been nothing like my experience
+            with this book. Every single page seems to be crammed full of importance. I often feel that I'm missing
+            little bits of information that Sanderson is laying out. The complexity of it all melts my mind a little,
+            but also gets me really excited. I think I picked up on a reference to Nazh lurking around Bridge 4. It's
+            subtle, but I don't think I'm off on this one. Can't wait to find out more about him (although knowing
+            Sanderson, it could be a while).
+          </p>
+          <div class="date right">
+            February 1, 2018
+          </div>
+        </div>
+      </div>
+      <div class="history">
+        <header class="subheader">
+          History
+        </header>
+        <ul>
+          <li>
+            <span>January 7, 2018 &mdash;</span>
+            <span>Started Reading</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <hr />
+  <a id="repo-link" href="https://github.com/kylehoover/cs-260/tree/master/creative-project">
+    GitHub Repository
+  </a>
+</footer>
+
+<!-- Materialize -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+</body>
+</html>

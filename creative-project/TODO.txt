@@ -1,3 +1,3 @@
-have books rise up a little on hover
+form colors need to be same color as secondary
 
-bookmark icon in nav?
+add reading status: partially read
