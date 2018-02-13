@@ -1,0 +1,5 @@
+@media only screen and (min-width: 928px) {
+  #search-form > .row > .col {
+    width: 50%;
+  }
+}

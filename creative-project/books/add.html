@@ -9,6 +9,9 @@
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection" />
 
   <link type="text/css" rel="stylesheet" href="/css/bookmark.css" />
+  <link type="text/css" rel="stylesheet" href="/css/bookmark-large.css" />
+  <link type="text/css" rel="stylesheet" href="/css/books.css" />
+  <link type="text/css" rel="stylesheet" href="/css/books-large.css" />
 
   <title>Bookmark</title>
 </head>
@@ -27,7 +30,7 @@
       <li><a href="/stats/" class="nav-item">Stats</a></li>
       <li><a href="/about/" class="nav-item">About</a></li>
     </ul>
-    <ul id="add-book-container">
+    <ul id="nav-right">
       <li>
         <a href="/books/add.html" id="add-book" class="waves-effect waves-light btn secondary">
           Add Book
@@ -43,20 +46,15 @@
   </header>
   <form id="search-form" action="javascript:void(0)">
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="book-title" type="text" />
         <label for="book-title">Book Title</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="author" type="text" />
         <label for="author">Author</label>
       </div>
-    </div>
-    <!--<div class="row">-->
-
-    <!--</div>-->
-    <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12">
         <input id="isbn" type="number" />
         <label for="isbn">ISBN</label>
       </div>

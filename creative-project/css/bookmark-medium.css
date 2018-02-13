@@ -1,0 +1,26 @@
+@media only screen and (min-width: 600px) {
+  nav ul#menu-dropdown > li#dropdown-add-book {
+    display: none;
+  }
+
+  nav > ul#nav-right {
+    align-items: center;
+    display: flex;
+  }
+
+  nav > ul#nav-right > li {
+    display: list-item;
+  }
+
+  nav > ul#nav-right > li:first-child {
+    margin-right: 32px;
+  }
+
+  nav > ul#nav-right #add-book {
+    margin: 0;
+  }
+
+  main {
+    width: 504px;
+  }
+}

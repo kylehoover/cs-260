@@ -1,0 +1,14 @@
+@media only screen and (min-width: 600px) {
+  #home-container {
+    display: flex;
+  }
+
+  .books-grid {
+    padding-right: 32px;
+    width: 320px;
+  }
+
+  .stats {
+    width: 176px;
+  }
+}

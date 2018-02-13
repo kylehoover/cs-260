@@ -71,23 +71,30 @@ nav > #logo {
   margin-right: 32px;
 }
 
+nav > #logo > #nav-title {
+  font-size: 40px;
+  font-weight: 500;
+}
+
 nav > #logo > i {
   font-size: 32px;
   margin-top: 8px;
 }
 
-nav #add-book-container {
+nav > ul > li {
+  display: none;
+}
+
+nav > ul#nav-right {
   margin-left: auto;
 }
 
-nav #add-book-container #add-book {
-  margin: 0;
+nav > ul > li#menu-dropdown-btn {
+  display: list-item;
 }
 
-nav #nav-title {
-  font-size: 40px;
-  font-weight: 500;
-  /*margin-right: 8px;*/
+nav > ul > li#menu-dropdown-btn > a > i {
+  font-size: 2rem;
 }
 
 nav .nav-item {
@@ -101,7 +108,7 @@ main {
   font-weight: 300;
   margin: auto;
   padding: 48px 0;
-  width: 300px;
+  width: 304px;
 }
 
 main header {
@@ -113,86 +120,6 @@ main header.page-header {
   font-weight: 500;
   margin-bottom: 48px;
 }
-
-.books-grid {
-  display: grid;
-  grid-gap: 32px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.books-grid > .book {
-  max-height: 184px;
-  overflow: hidden;
-  position: relative;
-}
-
-.books-grid > .book > img {
-  height: auto;
-  max-width: 100%;
-}
-
-.books-grid > .book > .status-icon {
-  top: 5%;
-  position: absolute;
-  right: 5%;
-}
-
-.books-grid > .stats {
-  /*display: none;*/
-  /*grid-column-start: 5;*/
-  /*grid-row: 1 / 4;*/
-}
-
-.books-grid > .stats > section {
-  margin-bottom: 32px;
-}
-
-.books-grid > .stats > section:last-child {
-  margin-bottom: 0;
-}
-
-.books-grid > .stats header {
-  border-bottom: 1px solid black;
-  color: black;
-  font-size: 28px;
-  margin-bottom: 32px;
-}
-
-.books-grid > .stats header.subheader {
-  border-bottom: none;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
-.books-grid > .stats .progress {
-  background-color: #e0f2f1;
-  height: 16px;
-  margin: 0;
-}
-
-.books-grid > .stats .progress > .determinate {
-  width: 17%;
-}
-
-.books-grid > .stats .pages-read {
-  margin-bottom: 16px;
-}
-
-.books-grid > .stats .pages-read > .number {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.books-grid > .stats .icon-info {
-  align-items: center;
-  display: flex;
-  margin-bottom: 16px;
-}
-
-.books-grid > .stats .icon-info > i.status-icon {
-  margin-right: 16px;
-}
-
 
 footer {
   padding: 0 16px 16px 16px;
