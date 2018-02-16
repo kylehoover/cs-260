@@ -49,23 +49,31 @@ function search(title, author, isbn) {
         if (item.volumeInfo.authors)
           books += '<div class="author">'+ item.volumeInfo.authors.join(', ') +'</div>'
 
+        books += '<div class="action-btns">'
+
+        if (item.volumeInfo.description)
+          books +=
+            '<a class="waves-effect waves-light btn grey modal-trigger" href="#'+ item.id +'">' +
+            '  Description' +
+            '</a>'
+
         books +=
-          '<div class="action-btns">' +
-          '  <a class="waves-effect waves-light btn grey modal-trigger" href="#'+ item.id +'">' +
-          '    Description' +
-          '  </a>' +
-          '  <button class="waves-effect waves-light btn secondary">' +
-          '    Add' +
-          '  </button>' +
-          '</div>' +
-          '</div> ' +
-          '<div id="'+ item.id +'" class="modal">' +
-          '  <div class="modal-content">' +
-          '    <h4>Description</h4>' +
-          '    <p>'+ item.volumeInfo.description +'</p>' +
-          '  </div> ' +
-          '</div>' +
-          '</li>'
+          '    <button class="waves-effect waves-light btn secondary">' +
+          '      Add' +
+          '    </button>' +
+          '  </div>' +
+          '</div> '
+
+        if (item.volumeInfo.description)
+          books +=
+            '<div id="'+ item.id +'" class="modal">' +
+            '  <div class="modal-content">' +
+            '    <h4>Description</h4>' +
+            '    <p>'+ item.volumeInfo.description +'</p>' +
+            '  </div> ' +
+            '</div>'
+        
+        books += '</li>'
       })
     } else {
       books += '<li>No books were found that match your search criteria</li>'
