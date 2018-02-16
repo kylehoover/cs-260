@@ -2,4 +2,8 @@
   #search-form > .row > .col {
     width: 50%;
   }
+
+  .book-container > .book {
+    max-width: 232px;
+  }
 }

@@ -1,12 +1,7 @@
 @media only screen and (min-width: 928px) {
-  /*nav #add-book-container {*/
-    /*display: block;*/
-    /*margin-left: auto;*/
-  /*}*/
-
-  /*nav #add-book-container #add-book {*/
-    /*margin: 0;*/
-  /*}*/
+  nav > ul#nav-right > li:first-child {
+    margin-right: 0;
+  }
 
   nav > ul > li {
     display: list-item;

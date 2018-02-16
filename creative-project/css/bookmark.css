@@ -24,13 +24,6 @@ i.white-icon {
   color: white;
 }
 
-.circle {
-  background-color: green;
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
-}
-
 .label, #repo-link {
   color: #9e9e9e;
 }
@@ -119,6 +112,10 @@ main header.page-header {
   font-size: 40px;
   font-weight: 500;
   margin-bottom: 48px;
+}
+
+main header.page-header.coming-soon {
+  font-size: 32px;
 }
 
 footer {

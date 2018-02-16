@@ -23,4 +23,8 @@
   main {
     width: 504px;
   }
+
+  main header.page-header.coming-soon {
+    font-size: 40px;
+  }
 }
