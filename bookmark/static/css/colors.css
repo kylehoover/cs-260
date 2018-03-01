@@ -1,0 +1,39 @@
+i.green-icon {
+  color: #01ff00;
+}
+
+i.orange-icon {
+  color: #ff8d00;
+}
+
+i.purple-icon {
+  color: #8A53A6;
+}
+
+i.red-icon {
+  color: #ff0000;
+}
+
+i.white-icon {
+  color: white;
+}
+
+.primary {
+  background-color: #8A53A6;
+}
+
+.secondary {
+  background-color: #4db6ac !important;
+}
+
+.btn.primary:hover {
+  background-color: #a477bb;
+}
+
+.btn.primary:focus {
+  background-color: #8A53A6;
+}
+
+.btn.secondary:hover {
+  background-color: #72c5bd !important;
+}
