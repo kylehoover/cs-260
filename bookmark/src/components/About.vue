@@ -88,6 +88,24 @@
     name: 'About',
     components: {
       StatusIcon
+    },
+    data: function () {
+      return {
+        faqs: [
+          {
+            question: 'What pages currently have content?',
+            answer: 'The <b>Home</b> page, the <b>About</b> page, clicking the <b>Add Book</b> button, and clicking on' +
+            '<b>Words of Radiance</b> on the <b>Home</b> page.'
+          },
+          {
+            question: 'What information is the home page showing me?',
+            answer: 'The home page gives you a summary of the books you are currently reading, or have already read, for the' +
+            'current year. Click on one of the books to get more information about that book. The home page also gives you' +
+            'some quick information on how much progress you\'ve made toward your reading goal for the year, as well as a few' +
+            'fun stats.'
+          }
+        ]
+      }
     }
   }
 </script>

@@ -178,10 +178,6 @@
     margin: 0;
   }
 
-  /*.stats .progress > .determinate {*/
-    /*width: 17%;*/
-  /*}*/
-
   .stats .pages-read {
     margin-bottom: 16px;
   }

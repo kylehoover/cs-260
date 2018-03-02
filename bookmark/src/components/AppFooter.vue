@@ -1,7 +1,7 @@
 <template>
   <footer>
     <hr />
-    <a id="repo-link" href="https://github.com/kylehoover/cs-260/tree/master/bookmark">
+    <a id="repo-link" href="https://github.com/kylehoover/cs-260/tree/master/bookmark" target="_blank">
       GitHub Repository
     </a>
   </footer>

@@ -29,8 +29,9 @@
             status: 'currentlyReading',
             img: '/static/imgs/re.jpg',
             history: [
-              { type: 'stated', date: new Date('2018-01-16') }
-            ]
+              { type: 'started', date: new Date('Jan 16, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'On the Nature of the Universe',
@@ -40,8 +41,9 @@
             status: 'currentlyReading',
             img: '/static/imgs/nature-of-universe.jpg',
             history: [
-              { type: 'started', date: new Date('2018-02-21') }
-            ]
+              { type: 'started', date: new Date('Feb 21, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'Oathbringer',
@@ -51,8 +53,9 @@
             status: 'currentlyReading',
             img: '/static/imgs/oathbringer.jpg',
             history: [
-              { type: 'started', date: new Date('2018-02-27') }
-            ]
+              { type: 'started', date: new Date('Feb 27, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'Edgedancer',
@@ -62,9 +65,10 @@
             status: 'read',
             img: '/static/imgs/edgedancer.jpg',
             history: [
-              { type: 'started', date: new Date('2018-02-23') },
-              { type: 'finished', date: new Date('2018-02-26') }
-            ]
+              { type: 'started', date: new Date('Feb 23, 2018') },
+              { type: 'finished', date: new Date('Feb 26, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'Words of Radiance',
@@ -74,8 +78,18 @@
             status: 'read',
             img: '/static/imgs/wor.jpg',
             history: [
-              { type: 'started', date: new Date('2018-01-07') },
-              { type: 'finished', date: new Date('2018-02-20') }
+              { type: 'started', date: new Date('Jan 7, 2018') },
+              { type: 'finished', date: new Date('Feb 20, 2018') }
+            ],
+            notes: [
+              {
+                text: 'Considering how long the books in this series are, you would think there would be parts you would' +
+                'have to trudge through until the pace picked up again. And yet, that has been nothing like my experience' +
+                'with this book. Every single page seems to be crammed full of importance. I often feel that I\'m missing' +
+                'little bits of information that Sanderson is laying out. The complexity of it all melts my mind a little,' +
+                'but also gets me really excited.',
+                date: new Date('Feb 1, 2018')
+              }
             ]
           },
           {
@@ -86,9 +100,10 @@
             status: 'read',
             img: '/static/imgs/aeneid.jpg',
             history: [
-              { type: 'started', date: new Date('2018-02-02') },
-              { type: 'finished', date: new Date('2018-02-18') }
-            ]
+              { type: 'started', date: new Date('Feb 2, 2018') },
+              { type: 'finished', date: new Date('Feb 18, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'Iliad',
@@ -98,9 +113,10 @@
             status: 'read',
             img: '/static/imgs/iliad.jpg',
             history: [
-              { type: 'started', date: new Date('2018-01-08') },
-              { type: 'finished', date: new Date('2018-01-29') }
-            ]
+              { type: 'started', date: new Date('Jan 8, 2018') },
+              { type: 'finished', date: new Date('Jan 29, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'Harry Potter and the Deathly Hallows',
@@ -110,9 +126,10 @@
             status: 'read',
             img: '/static/imgs/hp7.jpg',
             history: [
-              { type: 'started', date: new Date('2017-12-20') },
-              { type: 'finished', date: new Date('2018-01-03') }
-            ]
+              { type: 'started', date: new Date('Dec 20, 2017') },
+              { type: 'finished', date: new Date('Jan 3, 2018') }
+            ],
+            notes: []
           },
           {
             title: 'The Way of Kings',
@@ -122,9 +139,10 @@
             status: 'read',
             img: '',
             history: [
-              { type: 'started', date: new Date('2014-11-13') },
-              { type: 'finished', date: new Date('2014-12-20') }
-            ]
+              { type: 'started', date: new Date('Nov 13, 2014') },
+              { type: 'finished', date: new Date('Dec 20, 2014') }
+            ],
+            notes: []
           }
         ]
       }
