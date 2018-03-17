@@ -57,7 +57,7 @@
               <a class="waves-effect waves-light btn grey modal-trigger" :href="'#' + book.id" v-if="book.volumeInfo.description">
                 Description
               </a>
-              <button class="waves-effect waves-light btn secondary">
+              <button class="waves-effect waves-light btn secondary" @click="addBook(book)">
                 Add
               </button>
             </div>
@@ -89,6 +89,27 @@
       }
     },
     methods: {
+      addBook: function (book) {
+        const info = book.volumeInfo
+        const isbn = parseInt(info.industryIdentifiers.filter(id => id.type === 'ISBN_13')[0].identifier)
+
+        if (this.$store.state.books.findIndex(book => book.isbn === isbn) !== -1) {
+          Materialize.toast('This book is already in your collection!', 2000)
+          return
+        }
+
+        const bookToAdd = {
+          title: info.title,
+          author: info.authors && info.authors.join(', '),
+          isbn: isbn,
+          pages: info.pageCount,
+          status: 'wantToRead',
+          img: info.imageLinks.thumbnail,
+          history: [],
+          notes: []
+        }
+        this.$store.dispatch('addBook', {book: bookToAdd, router: this.$router})
+      },
       search: function () {
         if (!this.title && !this.author && !this.isbn)
           Materialize.toast('Please provide either a title, author, or ISBN number', 5000)
@@ -106,7 +127,12 @@
           axios.get(url)
             .then(resp => {
               console.log(resp)
-              this.results = resp.data.items
+              this.results = resp.data.items &&
+                resp.data.items.filter(book => {
+                  const info = book.volumeInfo
+                  const hasISBN = info.industryIdentifiers && info.industryIdentifiers.findIndex(id => id.type === 'ISBN_13') !== -1
+                  return hasISBN && info.imageLinks
+                })
               this.view = 'results'
             })
         }

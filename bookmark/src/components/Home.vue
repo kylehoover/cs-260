@@ -2,7 +2,7 @@
   <div id="home-container">
     <div class="books-grid">
       <router-link
-        v-for="book in booksFiltered"
+        v-for="book in currentBooks"
         :to="'/books/' + book.isbn + '/'"
         class="book hoverable"
         :key="book.isbn"
@@ -32,7 +32,7 @@
             {{ commaNumber(pagesReadThisYear) }}
           </div>
           <div class="label">
-            Pages Read in 2018
+            Pages Read in {{ currentYear }}
           </div>
         </div>
         <div class="pages-read">
@@ -49,12 +49,16 @@
           Icons
         </header>
         <div class="icon-info">
-          <i class="small material-icons status-icon orange-icon">bookmark</i>
+          <status-icon status="currentlyReading"></status-icon>
           <span class="label">Currently Reading</span>
         </div>
         <div class="icon-info">
-          <i class="small material-icons status-icon green-icon">check_circle</i>
+          <status-icon status="read"></status-icon>
           <span class="label">Read</span>
+        </div>
+        <div class="icon-info">
+          <status-icon status="wantToRead"></status-icon>
+          <span class="label">Want to Read</span>
         </div>
       </section>
     </div>
@@ -70,25 +74,26 @@
     components: {
       StatusIcon
     },
-    props: {
-      books: { type: Array, required: true }
-    },
     data: function () {
       return {
-        goal: 12
+        currentYear: new Date().getFullYear()
       }
     },
     computed: {
-      booksFiltered: function () {
+      goal: function () {
+        return this.$store.state.goal
+      },
+      currentBooks: function () {
         const currentYear = new Date().getFullYear()
 
-        return this.books.filter(book => {
-          if (book.status === 'currentlyReading')
+        return this.$store.state.books.filter(book => {
+          if (book.status === 'currentlyReading' || book.status === 'wantToRead')
             return true
 
           if (book.status === 'read') {
             for (let event of book.history) {
-              if (event.type === 'finished' && event.date.getFullYear() === currentYear)
+              const date = new Date(event.date)
+              if (event.type === 'finished' && date.getFullYear() === currentYear)
                 return true
             }
           }
@@ -97,27 +102,16 @@
         })
       },
       booksRead: function () {
-        return this.booksFiltered.reduce((acc, book) => (book.status === 'read' ? acc + 1 : 0), 0)
+        return this.currentBooks.reduce((acc, book) => (book.status === 'read' ? acc + 1 : acc), 0)
       },
       progressPercentage: function () {
         return (this.booksRead / this.goal) * 100
       },
       totalPagesRead: function () {
-        return this.books.filter(book => book.status === 'read').reduce((acc, book) => (acc + book.pages), 0)
+        return this.$store.getters.pagesReadTotal
       },
       pagesReadThisYear: function () {
-        const currentYear = new Date().getFullYear()
-
-        return this.books.filter(book => {
-          if (book.status === 'read') {
-            for (let event of book.history) {
-              if (event.type === 'finished' && event.date.getFullYear() === currentYear)
-                return true
-            }
-          }
-
-          return false
-        }).reduce((acc, book) => (acc + book.pages), 0)
+        return this.$store.getters.pagesReadByYear(this.currentYear)
       }
     },
     methods: {

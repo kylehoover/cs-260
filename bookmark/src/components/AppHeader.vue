@@ -2,9 +2,9 @@
   <header>
     <ul id="menu-dropdown" class="dropdown-content">
       <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/books/">Books</router-link></li>
-      <li><router-link to="/progress/">Progress</router-link></li>
-      <li><router-link to="/stats/">Stats</router-link></li>
+      <!--<li><router-link to="/books/">Books</router-link></li>-->
+      <!--<li><router-link to="/progress/">Progress</router-link></li>-->
+      <!--<li><router-link to="/stats/">Stats</router-link></li>-->
       <li><router-link to="/about/">About</router-link></li>
       <li id="dropdown-add-book"><router-link to="/books/add/">Add Book</router-link></li>
     </ul>
@@ -15,9 +15,9 @@
       </div>
       <ul>
         <router-link to="/" tag="li"><a class="nav-item">Home</a></router-link>
-        <router-link to="/books/" tag="li"><a class="nav-item">Books</a></router-link>
-        <router-link to="/progress/" tag="li"><a class="nav-item">Progress</a></router-link>
-        <router-link to="/stats/" tag="li"><a class="nav-item">Stats</a></router-link>
+        <!--<router-link to="/books/" tag="li"><a class="nav-item">Books</a></router-link>-->
+        <!--<router-link to="/progress/" tag="li"><a class="nav-item">Progress</a></router-link>-->
+        <!--<router-link to="/stats/" tag="li"><a class="nav-item">Stats</a></router-link>-->
         <router-link to="/about/" tag="li"><a class="nav-item">About</a></router-link>
       </ul>
       <ul id="nav-right">
