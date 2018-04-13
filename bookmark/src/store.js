@@ -7,7 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     books: [],
-    goal: 12
+    goal: 12,
+    loginError: false,
+    registerError: false,
+    user: {}
   },
   getters: {
     bookByISBN: (state) => (isbn) => {
@@ -41,6 +44,15 @@ export default new Vuex.Store({
   mutations: {
     setBooks (state, books) {
       state.books = books
+    },
+    setLoginError (state, error) {
+      state.loginError = error
+    },
+    setRegisterError (state, error) {
+      state.registerError = error
+    },
+    setUser (state, user) {
+      state.user = user
     }
   },
   actions: {
@@ -55,19 +67,66 @@ export default new Vuex.Store({
         })
     },
     fetchBooks (context) {
-      axios.get('/api/books')
+      axios.get(`/api/users/${context.state.user.id}/books`)
         .then(resp => {
-          context.commit('setBooks', resp.data)
+          console.log(resp)
+          context.commit('setBooks', resp.data.books)
         })
         .catch(err => {
           console.log('Failed to fetch books', err)
+        })
+    },
+    init (context, router) {
+      axios.get('/api/users/me')
+        .then(resp => {
+          context.commit('setLoginError', false)
+          context.commit('setRegisterError', false)
+          context.commit('setUser', resp.data.user)
+          context.dispatch('fetchBooks')
+        })
+        .catch(err => {
+          router.push('/')
+        })
+    },
+    login (context, { data, router }) {
+      axios.post('/api/login', data)
+        .then(resp => {
+          context.commit('setLoginError', false)
+          context.commit('setRegisterError', false)
+          context.commit('setUser', resp.data.user)
+          context.dispatch('fetchBooks')
+          router.push('/home/')
+        })
+        .catch(err => {
+          context.commit('setLoginError', true)
+        })
+    },
+    logout (context, router) {
+      axios.post('/api/logout')
+        .then(resp => {
+          context.commit('setBooks', [])
+          context.commit('setUser', {})
+          router.push('/')
+        })
+    },
+    register(context, { data, router }) {
+      axios.post('/api/register', data)
+        .then(resp => {
+          context.commit('setLoginError', false)
+          context.commit('setRegisterError', false)
+          context.commit('setUser', resp.data.user)
+          context.dispatch('fetchBooks')
+          router.push('/home/')
+        })
+        .catch(err => {
+          context.commit('setRegisterError', true)
         })
     },
     removeBook (context, { isbn, router }) {
       axios.delete(`/api/books/${isbn}`)
         .then(resp => {
           context.dispatch('fetchBooks')
-          router.push('/')
+          router.push('/home/')
         })
         .catch(err => {
           console.log('Failed to delete book', err)

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <app-header :show-nav-items="showNavItems"></app-header>
     <main>
       <router-view></router-view>
     </main>
@@ -19,7 +19,14 @@
       AppFooter
     },
     created: function () {
-      this.$store.dispatch('fetchBooks')
+      if (this.$route.path !== '/') {
+        this.$store.dispatch('init', this.$router)
+      }
+    },
+    computed: {
+      showNavItems: function () {
+        return this.$route.path !== '/'
+      }
     }
   }
 </script>

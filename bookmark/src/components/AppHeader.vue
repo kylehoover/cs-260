@@ -1,26 +1,24 @@
 <template>
   <header>
     <ul id="menu-dropdown" class="dropdown-content">
-      <li><router-link to="/">Home</router-link></li>
-      <!--<li><router-link to="/books/">Books</router-link></li>-->
-      <!--<li><router-link to="/progress/">Progress</router-link></li>-->
-      <!--<li><router-link to="/stats/">Stats</router-link></li>-->
+      <li><router-link to="/home/">Home</router-link></li>
       <li><router-link to="/about/">About</router-link></li>
-      <li id="dropdown-add-book"><router-link to="/books/add/">Add Book</router-link></li>
+      <li class="small-only"><router-link to="/books/add/">Add Book</router-link></li>
+      <li class="small-only"><router-link to="/" @click="logout">Log Out</router-link></li>
+    </ul>
+    <ul id="logout-dropdown" class="dropdown-content">
+      <li><a @click="logout">Log Out</a></li>
     </ul>
     <nav>
       <div id="logo">
-        <a href="/" id="nav-title">Bookmark</a>
+        <router-link to="/home/" id="nav-title">Bookmark</router-link>
         <i class="material-icons">bookmark</i>
       </div>
-      <ul>
-        <router-link to="/" tag="li"><a class="nav-item">Home</a></router-link>
-        <!--<router-link to="/books/" tag="li"><a class="nav-item">Books</a></router-link>-->
-        <!--<router-link to="/progress/" tag="li"><a class="nav-item">Progress</a></router-link>-->
-        <!--<router-link to="/stats/" tag="li"><a class="nav-item">Stats</a></router-link>-->
+      <ul v-show="showNavItems">
+        <router-link to="/home/" tag="li"><a class="nav-item">Home</a></router-link>
         <router-link to="/about/" tag="li"><a class="nav-item">About</a></router-link>
       </ul>
-      <ul id="nav-right">
+      <ul id="nav-right" v-show="showNavItems">
         <li>
           <router-link to="/books/add/" id="add-book" class="waves-effect waves-light btn secondary">
             Add Book
@@ -31,16 +29,38 @@
             <i class="material-icons">menu</i>
           </a>
         </li>
+        <li>
+          <a class="dropdown-button nav-item" data-activates="logout-dropdown">
+            {{ firstName }}
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
-  $('.dropdown-button').dropdown()
-
   export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    props: {
+      showNavItems: {
+        type: Boolean,
+        default: true
+      }
+    },
+    created: function () {
+      $('.dropdown-button').dropdown()
+    },
+    computed: {
+      firstName: function () {
+        return this.$store.state.user.firstName
+      }
+    },
+    methods: {
+      logout: function () {
+        this.$store.dispatch('logout', this.$router)
+      }
+    }
   }
 </script>
 
@@ -91,8 +111,12 @@
     font-weight: 300;
   }
 
+  .user {
+    color: white;
+  }
+
   @media only screen and (min-width: 600px) {
-    nav ul#menu-dropdown > li#dropdown-add-book {
+    nav ul#menu-dropdown > li.small-only {
       display: none;
     }
 
@@ -105,8 +129,12 @@
       display: list-item;
     }
 
-    nav > ul#nav-right > li:first-child {
+    nav > ul#nav-right > li {
       margin-right: 32px;
+    }
+
+    nav > ul#nav-right > li:last-child {
+      margin-right: 0;
     }
 
     nav > ul#nav-right #add-book {
@@ -116,7 +144,7 @@
 
   @media only screen and (min-width: 928px) {
     nav > ul#nav-right > li:first-child {
-      margin-right: 0;
+      /*margin-right: 0;*/
     }
 
     nav > ul > li {
