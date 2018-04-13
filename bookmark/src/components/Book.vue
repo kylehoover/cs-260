@@ -26,29 +26,29 @@
           <div class="author">
             {{ book.author }}
           </div>
-          <div class="notes">
-            <header class="subheader">
-              <span>Notes</span>
-              <button class="waves-effect waves-light btn right primary modal-trigger" data-target="new-note-modal">New Note</button>
-            </header>
-            <div class="note" v-for="note in book.notes">
-              <p>
-                {{ note.text }}
-              </p>
-              <div class="date right">
-                {{ formatDate(note.date) }}
-              </div>
-            </div>
-            <div id="new-note-modal" class="modal">
-              <div class="modal-content">
-                <div class="input-field">
-                  <textarea id="note" class="materialize-textarea" v-model="newNote" autofocus></textarea>
-                  <label for="note">Note</label>
-                </div>
-                <button class="waves-effect waves-light btn secondary" @click="addNote">Save</button>
-              </div>
-            </div>
-          </div>
+          <!--<div class="notes">-->
+            <!--<header class="subheader">-->
+              <!--<span>Notes</span>-->
+              <!--<button class="waves-effect waves-light btn right primary modal-trigger" data-target="new-note-modal">New Note</button>-->
+            <!--</header>-->
+            <!--<div class="note" v-for="note in book.notes">-->
+              <!--<p>-->
+                <!--{{ note.text }}-->
+              <!--</p>-->
+              <!--<div class="date right">-->
+                <!--{{ formatDate(note.date) }}-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div id="new-note-modal" class="modal">-->
+              <!--<div class="modal-content">-->
+                <!--<div class="input-field">-->
+                  <!--<textarea id="note" class="materialize-textarea" v-model="newNote" autofocus></textarea>-->
+                  <!--<label for="note">Note</label>-->
+                <!--</div>-->
+                <!--<button class="waves-effect waves-light btn secondary" @click="addNote">Save</button>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="history">
             <header class="subheader">
               History
@@ -92,8 +92,8 @@
     },
     computed: {
       book: function () {
-        const isbn = parseInt(this.$route.params.isbn)
-        return this.$store.getters.bookByISBN(isbn)
+        const id = parseInt(this.$route.params.id)
+        return this.$store.getters.bookById(id)
       },
       numTimesRead: function () {
         return this.book.history.filter(event => event.type === 'finished').length
@@ -123,19 +123,30 @@
         this.newNote = ''
       },
       removeBook: function () {
-        this.$store.dispatch('removeBook', { isbn: this.book.isbn, router: this.$router })
+        this.$store.dispatch('removeBook', { bookId: this.book.id, router: this.$router })
       },
       updateStatus: function () {
         const book = this.book
         const date = new Date()
         const dateAsString = `${this.months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+        let type = undefined
+        let history = undefined
 
         if (book.status === 'currentlyReading')
-          book.history.push({ type: 'started', date: dateAsString })
+          type = 'started'
         else if (book.status === 'read')
-          book.history.push({ type: 'finished', date: dateAsString })
+          type = 'finished'
 
-        this.$store.dispatch('updateBook', book)
+        if (type) {
+          history = { type, date }
+          book.history.push({ type, date: dateAsString })
+        }
+
+        this.$store.dispatch('updateStatus', {
+          bookId: this.book.id,
+          status: this.book.status,
+          history
+        })
       }
     }
   }

@@ -1,11 +1,14 @@
 <template>
   <div id="home-container">
     <div class="books-grid">
+      <div id="no-books" v-if="currentBooks.length === 0">
+        You don't have any books! Add a new book to see it here.
+      </div>
       <router-link
         v-for="book in currentBooks"
-        :to="'/books/' + book.isbn + '/'"
+        :to="'/books/' + book.id + '/'"
         class="book hoverable"
-        :key="book.isbn"
+        :key="book.id"
       >
         <img :src="book.img" />
         <status-icon :status="book.status"></status-icon>
@@ -15,17 +18,17 @@
       <header>
         At a Glance
       </header>
-      <section>
-        <header class="subheader">
-          Progress
-        </header>
-        <div class="progress">
-          <div class="determinate secondary" :style="'width: ' + progressPercentage + '%'"></div>
-        </div>
-        <div class="label">
-          {{ booksRead }} / {{ goal }}
-        </div>
-      </section>
+      <!--<section>-->
+        <!--<header class="subheader">-->
+          <!--Progress-->
+        <!--</header>-->
+        <!--<div class="progress">-->
+          <!--<div class="determinate secondary" :style="'width: ' + progressPercentage + '%'"></div>-->
+        <!--</div>-->
+        <!--<div class="label">-->
+          <!--{{ booksRead }} / {{ goal }}-->
+        <!--</div>-->
+      <!--</section>-->
       <section>
         <div class="pages-read">
           <div class="number">
@@ -193,6 +196,10 @@
 
   .label {
     color: #9e9e9e;
+  }
+
+  #no-books {
+    width: 400px;
   }
 
   @media only screen and (min-width: 600px) {

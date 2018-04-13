@@ -13,6 +13,14 @@ export default new Vuex.Store({
     user: {}
   },
   getters: {
+    bookById: (state) => (id) => {
+      for (let book of state.books) {
+        if (book.id === id)
+          return book
+      }
+
+      return undefined
+    },
     bookByISBN: (state) => (isbn) => {
       for (let book of state.books) {
         if (book.isbn === isbn)
@@ -57,10 +65,14 @@ export default new Vuex.Store({
   },
   actions: {
     addBook (context, { book, router }) {
-      axios.post('/api/books', book)
+      let id
+      axios.post(`/api/users/${context.state.user.id}/books`, book)
         .then(resp => {
-          context.state.books.push(resp.data)
-          router.push(`/books/${book.isbn}/`)
+          id = resp.data.bookId
+          return context.dispatch('fetchBooks')
+        })
+        .then(resp => {
+          router.push(`/books/${id}/`)
         })
         .catch(err => {
           console.log('Failed to add book', err)
@@ -116,14 +128,14 @@ export default new Vuex.Store({
           context.commit('setRegisterError', false)
           context.commit('setUser', resp.data.user)
           context.dispatch('fetchBooks')
-          router.push('/home/')
+          router.push('/about/')
         })
         .catch(err => {
           context.commit('setRegisterError', true)
         })
     },
-    removeBook (context, { isbn, router }) {
-      axios.delete(`/api/books/${isbn}`)
+    removeBook (context, { bookId, router }) {
+      axios.delete(`/api/users/${context.state.user.id}/books/${bookId}`)
         .then(resp => {
           context.dispatch('fetchBooks')
           router.push('/home/')
@@ -139,6 +151,12 @@ export default new Vuex.Store({
         })
         .catch(err => {
           console.log('Failed to update book', err)
+        })
+    },
+    updateStatus (context, { bookId, status, history }) {
+      axios.put(`/api/users/${context.state.user.id}/books/${bookId}/status`, { status, history })
+        .catch(err => {
+          console.log('Failed to update status', err)
         })
     }
   }

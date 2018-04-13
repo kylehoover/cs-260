@@ -124,8 +124,6 @@ app.get('/api/users/:id/books', verifyToken, (req, res) => {
   const { userId } = req
   const id = parseInt(req.params.id)
 
-  console.log(userId, id)
-
   if (userId !== id)
     return res.status(401).send()
 
@@ -133,7 +131,7 @@ app.get('/api/users/:id/books', verifyToken, (req, res) => {
     .join('users_books', 'users.id', 'users_books.user_id')
     .join('books', 'books.id', 'users_books.book_id')
     .where('users.id', id)
-    .select('title', 'author', 'isbn', 'pages', 'img', 'status', 'users_books.id as users_books_id')
+    .select('books.id as id', 'title', 'author', 'isbn', 'pages', 'img', 'status', 'users_books.id as users_books_id')
     .then(books => {
       return [
         books,
@@ -158,14 +156,40 @@ app.get('/api/users/:id/books', verifyToken, (req, res) => {
     })
 })
 
-app.get('/api/books', (req, res) => {
-  res.json({ books })
-})
+app.post('/api/users/:id/books', verifyToken, (req, res) => {
+  const { userId } = req
+  const id = parseInt(req.params.id)
 
-app.post('/api/books', (req, res) => {
+  if (userId !== id)
+    return res.status(401).send()
+
   const book = req.body
-  books.push(book)
-  res.status(201).json(book)
+
+  knex('books')
+    .insert({
+      title: book.title,
+      author: book.author,
+      isbn: book.isbn,
+      pages: book.pages,
+      img: book.img
+    })
+    .then(ids => {
+      return [
+        ids[0],
+        knex('users_books')
+          .insert({
+            status: book.status,
+            user_id: id,
+            book_id: ids[0]
+          })
+      ]
+    })
+    .spread((bookId, ids) => {
+      res.status(201).json({ bookId })
+    })
+    .catch(err => {
+      res.status(500).send()
+    })
 })
 
 app.put('/api/books/:isbn', (req, res) => {
@@ -179,15 +203,69 @@ app.put('/api/books/:isbn', (req, res) => {
   res.json(books[index])
 })
 
-app.delete('/api/books/:isbn', (req, res) => {
-  const isbn = parseInt(req.params.isbn)
-  const index = books.findIndex(book => book.isbn === isbn)
+app.delete('/api/users/:userId/books/:bookId', verifyToken, (req, res) => {
+  const { userId } = req
+  const id = parseInt(req.params.userId)
 
-  if (index  === -1)
-    res.sendStatus(404)
+  if (userId !== id)
+    return res.status(401).send()
 
-  books.splice(index, 1)
-  res.sendStatus(204)
+  const bookId = parseInt(req.params.bookId)
+
+  knex('users_books')
+    .where('user_id', id)
+    .andWhere('book_id', bookId)
+    .del()
+    .then(affected => {
+      res.status(204).send()
+    })
+})
+
+app.put('/api/users/:userId/books/:bookId/status', verifyToken, (req, res) => {
+  const { userId } = req
+  const id = parseInt(req.params.userId)
+
+  if (userId !== id)
+    return res.status(401).send()
+
+  const bookId = parseInt(req.params.bookId)
+  const { status, history } = req.body
+
+  knex('users_books')
+    .where({
+      user_id: id,
+      book_id: bookId
+    })
+    .update({
+      status
+    })
+    .then(affected => {
+      if (affected > 0 && history) {
+        return knex('users_books')
+          .where({
+            user_id: id,
+            book_id: bookId
+          })
+          .first('id')
+      }
+
+      return 0
+    })
+    .then(({ id: users_books_id }) => {
+      if (users_books_id > 0) {
+        knex('history')
+          .insert({
+            users_books_id,
+            type: history.type,
+            date: history.date.substr(0, 10)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+
+      res.status(200).send()
+    })
 })
 
 app.get('/api/users/me', verifyToken, (req, res) => {

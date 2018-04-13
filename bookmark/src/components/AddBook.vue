@@ -104,9 +104,7 @@
           isbn: isbn,
           pages: info.pageCount,
           status: 'wantToRead',
-          img: info.imageLinks.thumbnail,
-          history: [],
-          notes: []
+          img: info.imageLinks.thumbnail
         }
         this.$store.dispatch('addBook', {book: bookToAdd, router: this.$router})
       },

@@ -20,15 +20,6 @@
     </section>
     <section class="faq-item">
       <div class="question">
-        What pages currently have content?
-      </div>
-      <div class="answer">
-        The <b>Home</b> page, the <b>About</b> page, clicking the <b>Add Book</b> button, and clicking on
-        <b>Words of Radiance</b> on the <b>Home</b> page.
-      </div>
-    </section>
-    <section class="faq-item">
-      <div class="question">
         What information is the home page showing me?
       </div>
       <div class="answer">
@@ -36,16 +27,6 @@
         current year. Click on one of the books to get more information about that book. The home page also gives you
         some quick information on how much progress you've made toward your reading goal for the year, as well as a few
         fun stats.
-      </div>
-    </section>
-    <section class="faq-item">
-      <div class="question">
-        Where can I view all of my books?
-      </div>
-      <div class="answer">
-        You can find your books by clicking on the <b>Books</b> tab at the top of the page. There you will find all of the
-        books you have read, are currently reading, or that you want to read. You can also filter what books you want
-        displayed by year, reading status, genre, etc.
       </div>
     </section>
     <section class="faq-item">
