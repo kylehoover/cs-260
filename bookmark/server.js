@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const bodyParser = require('body-parser')
 const changeCase = require('change-case-object')
 const cookieParser = require('cookie-parser')
