@@ -11,7 +11,7 @@
     </ul>
     <nav>
       <div id="logo">
-        <router-link to="/home/" id="nav-title">Bookmark</router-link>
+        <router-link :to="bookmarkLink" id="nav-title">Bookmark</router-link>
         <i class="material-icons">bookmark</i>
       </div>
       <ul v-show="showNavItems">
@@ -54,6 +54,9 @@
     computed: {
       firstName: function () {
         return this.$store.state.user.firstName
+      },
+      bookmarkLink: function () {
+        return this.showNavItems ? '/home/' : '/'
       }
     },
     methods: {
